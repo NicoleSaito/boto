@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Boto.Api/Boto.Api.csproj" />
+  <Project Path="Boto.Application/Boto.Application.csproj" />
+  <Project Path="Boto.Domain/Boto.Domain.csproj" />
+  <Project Path="Boto.Infrastructure/Boto.Infrastructure.csproj" />
+</Solution>

@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: boto-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: boto
+      POSTGRES_PASSWORD: boto123
+      POSTGRES_DB: boto_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

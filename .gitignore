@@ -1,0 +1,39 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio
+*.rsuser
+*.userosscache
+*.sln.docstates
+
+## Rider / VS Code
+.idea/
+*.iml
+
+## Secrets — NUNCA versionar
+**/appsettings.Development.json
+**/appsettings.Local.json
+*.env
+.env
+
+## Docker
+docker-compose.override.yml
+
+## Logs
+*.log
+
+## OS
+.DS_Store
+Thumbs.db
