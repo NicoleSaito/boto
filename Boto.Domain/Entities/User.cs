@@ -1,10 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace Boto.Domain.Entities;
 
-public class User
+public class User : IdentityUser<Guid>
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string PasswordHash { get; set; } = string.Empty;
     public DateTime CreateDate { get; set; } = DateTime.UtcNow;
 }
