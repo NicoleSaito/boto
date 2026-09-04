@@ -1,3 +1,6 @@
+name: Build & Test
+
+on:
 name: Build
 
 on:
@@ -6,8 +9,19 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
+    runs-on: ubuntu-latest
+  push:
+    branches: [ main, hom, dev ]
+  pull_request:
+    branches: [ main, hom, dev ]
+
+jobs:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +38,20 @@ jobs:
 
       - name: Build
         run: dotnet build --no-restore --configuration Release
+
+      - name: Rodar testes com cobertura
+        run: dotnet test --no-build --configuration Release --collect:"XPlat Code Coverage" --results-directory ./coverage
+
+      - name: Publicar relatório de cobertura
+        uses: codecov/codecov-action@v4
+        with:
+          directory: ./coverage
+          fail_ci_if_error: false
+
+      - name: Checar vulnerabilidades em pacotes NuGet
+        run: dotnet list package --vulnerable --include-transitive
+
+      - name: Verificar formatação do código
+        run: dotnet format --verify-no-changes --verbosity diagnostic
+
+      
