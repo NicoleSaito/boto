@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Boto.Domain\Boto.Domain.csproj" />
+    <ProjectReference Include="..\Boto.Application\Boto.Application.csproj" />
   </ItemGroup>
 
 </Project>

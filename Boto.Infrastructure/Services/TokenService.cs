@@ -3,11 +3,12 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Boto.Application.Interfaces;
 using Boto.Domain.Entities;
 
 namespace Boto.Infrastructure.Services;
 
-public class TokenService
+public class TokenService : ITokenService
 {
     private readonly IConfiguration _configuration;
 
@@ -27,7 +28,6 @@ public class TokenService
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
         var expiresInMinutes = int.Parse(_configuration["Jwt:ExpiresInMinutes"]!);
 
         var token = new JwtSecurityToken(
