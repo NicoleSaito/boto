@@ -1,24 +1,13 @@
 name: Build & Test
 
 on:
-name: Build
-
-on:
   push:
-    branches: [ main ]
+    branches: [ main, hom, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, hom, dev ]
 
 permissions:
   contents: read
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-  push:
-    branches: [ main, hom, dev ]
-  pull_request:
-    branches: [ main, hom, dev ]
 
 jobs:
   build-and-test:
@@ -53,5 +42,3 @@ jobs:
 
       - name: Verificar formatação do código
         run: dotnet format --verify-no-changes --verbosity diagnostic
-
-      
